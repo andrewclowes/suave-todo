@@ -8,7 +8,7 @@ open Suave.Web
 open Suave.Types
 open Suave.Http.Successful
 
-let app : WebPart = OK("<h1>minimalism</h1>")
+let app : WebPart = OK("<h1>Suave To-Do</h1>")
 
 // If you prefer to run things manually in F# Interactive (over running 'build' in 
 // command line), then you can use the following commands to start the server

@@ -70,7 +70,7 @@ let reloadAppServer () =
 Target "run" (fun _ ->
   let app ctx = currentApp.Value ctx
   let _, server = startWebServerAsync serverConfig app
-
+  
   // Start Suave to host it on localhost
   reloadAppServer()
   Async.Start(server)
@@ -78,7 +78,7 @@ Target "run" (fun _ ->
   System.Diagnostics.Process.Start("http://localhost:8083") |> ignore
   
   // Watch for changes & reload when app.fsx changes
-  use watcher = !! (__SOURCE_DIRECTORY__ @@ "*.*") |> WatchChanges (fun _ -> reloadAppServer())
+  use watcher = !! "*.*" |> WatchChanges (fun _ -> reloadAppServer())
   traceImportant "Waiting for app.fsx edits. Press any key to stop."
   System.Console.ReadLine() |> ignore
 )
